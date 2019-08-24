@@ -15,7 +15,7 @@ RUN apk --update upgrade && apk add bind bind-tools bind-plugins
 RUN mkdir -m 0770 -p /etc/bind && chown -R root:named /etc/bind ; \
     mkdir -m 0770 -p /var/cache/bind && chown -R named:named /var/cache/bind ; \
     wget -q -O /etc/bind/bind.keys https://ftp.isc.org/isc/bind9/keys/9.11/bind.keys.v9_11 ; \
-    rndc-confgen -a
+    rndc-confgen -a -c /root/rndc.key
 
 COPY configs/. /etc/bind/
 
